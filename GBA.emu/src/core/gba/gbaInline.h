@@ -99,7 +99,7 @@ static inline int8_t Downcast8(T value) {
     return static_cast<int8_t>(value);
 }
 
-static inline uint32_t CPUReadOpenBus(ARM7TDMI& cpu)
+static __attribute__((noinline)) uint32_t CPUReadOpenBus(ARM7TDMI& cpu)
 {
     auto& gba = *cpu.gba;
     /* DMA shadowing overrides everything */
@@ -175,7 +175,7 @@ static inline void CPUWriteBackup(uint32_t address, uint8_t value) {
         (*cpuSaveGameFunc)(address, value);
 }
 
-static inline uint32_t CPUReadMemory(ARM7TDMI &cpu, uint32_t address)
+static __attribute__((noinline)) uint32_t CPUReadMemory(ARM7TDMI &cpu, uint32_t address)
 {
     auto& gba = *cpu.gba;
     auto& g_ioMem = gba.mem.ioMem.b;
@@ -324,7 +324,7 @@ static inline uint32_t CPUReadMemory(ARM7TDMI &cpu, uint32_t address)
     return value;
 }
 
-static inline uint32_t CPUReadHalfWord(ARM7TDMI &cpu, uint32_t address)
+static __attribute__((noinline)) uint32_t CPUReadHalfWord(ARM7TDMI &cpu, uint32_t address)
 {
     auto& gba = *cpu.gba;
     auto& g_ioMem = gba.mem.ioMem.b;
@@ -471,7 +471,7 @@ static inline uint32_t CPUReadHalfWord(ARM7TDMI &cpu, uint32_t address)
 }
 #define CPUReadHalfWord(address) CPUReadHalfWord(cpu, address)
 
-static inline int32_t CPUReadHalfWordSigned(ARM7TDMI &cpu, uint32_t address)
+static __attribute__((noinline)) int32_t CPUReadHalfWordSigned(ARM7TDMI &cpu, uint32_t address)
 {
 	uint16_t value = static_cast<uint16_t>(CPUReadHalfWord(address));
   if ((address & 1)) {
@@ -488,7 +488,7 @@ static inline int32_t CPUReadHalfWordSigned(ARM7TDMI &cpu, uint32_t address)
   return (int32_t)(int16_t)value;
 }
 
-static inline uint8_t CPUReadByte(ARM7TDMI &cpu, uint32_t address)
+static __attribute__((noinline)) uint8_t CPUReadByte(ARM7TDMI &cpu, uint32_t address)
 {
     auto& gba = *cpu.gba;
     auto& g_ioMem = gba.mem.ioMem.b;
@@ -589,7 +589,7 @@ static inline uint8_t CPUReadByte(ARM7TDMI &cpu, uint32_t address)
     }
 }
 
-static inline void CPUWriteMemory(ARM7TDMI &cpu, uint32_t address, uint32_t value)
+static __attribute__((noinline)) void CPUWriteMemory(ARM7TDMI &cpu, uint32_t address, uint32_t value)
 {
 	auto& gba = *cpu.gba;
 #ifdef GBA_LOGGING
@@ -705,7 +705,7 @@ static inline void CPUWriteMemory(ARM7TDMI &cpu, uint32_t address, uint32_t valu
     }
 }
 
-static inline void CPUWriteHalfWord(ARM7TDMI &cpu, uint32_t address, uint16_t value)
+static __attribute__((noinline)) void CPUWriteHalfWord(ARM7TDMI &cpu, uint32_t address, uint16_t value)
 {
 	auto& gba = *cpu.gba;
 #ifdef GBA_LOGGING
@@ -829,7 +829,7 @@ static inline void CPUWriteHalfWord(ARM7TDMI &cpu, uint32_t address, uint16_t va
     }
 }
 
-static inline void CPUWriteByte(ARM7TDMI &cpu, uint32_t address, uint8_t b)
+static __attribute__((noinline)) void CPUWriteByte(ARM7TDMI &cpu, uint32_t address, uint8_t b)
 {
     auto& gba = *cpu.gba;
     auto& g_ioMem = gba.mem.ioMem.b;

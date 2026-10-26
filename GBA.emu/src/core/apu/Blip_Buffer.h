@@ -4,6 +4,10 @@
 #ifndef BLIP_BUFFER_H
 #define BLIP_BUFFER_H
 
+#ifndef BLIP_BUFFER_FAST
+#define BLIP_BUFFER_FAST 1
+#endif
+
 // internal
 #include <limits.h>
 #include <inttypes.h>

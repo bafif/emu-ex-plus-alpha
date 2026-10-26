@@ -4556,7 +4556,7 @@ void CPULoop(GBASys &gba, EmuEx::EmuSystemTaskContext taskCtx, EmuEx::EmuVideo *
             	  video = nullptr;
               }
             }
-            if (VCOUNT % 53 == 0) // flush audio samples 4 times per frame
+            if (VCOUNT == 159) // flush audio samples once per frame
               psoundTickfn(audio);
             // entering H-Blank
             DISPSTAT |= 2;

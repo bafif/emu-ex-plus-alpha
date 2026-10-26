@@ -34,3 +34,9 @@ target_sources(gbaemu PRIVATE
 	core/apu/Multi_Buffer.cpp
 	core/apu/Gb_Apu_State.cpp
 )
+
+set_source_files_properties(
+	core/gba/gbaCpuArm.cpp
+	core/gba/gbaCpuThumb.cpp
+	PROPERTIES COMPILE_OPTIONS "-Os"
+)

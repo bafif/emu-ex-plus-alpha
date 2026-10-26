@@ -27,6 +27,8 @@ const std::string_view AppMeta::creditsViewStr{CREDITS_INFO_STRING "(c) 2012-202
 const std::string_view AppMeta::configFilename{"GbaEmu.config"};
 const bool AppMeta::hasCheats{true};
 const bool AppMeta::needsGlobalInstance{true};
+const bool AppMeta::canRenderRGBA8888{false};
+const int AppMeta::forcedSoundRate{22050};
 const AspectRatioInfo AppMeta::aspectRatioInfo{"3:2 (Original)", {3, 2}};
 const NameFilterFunc AppMeta::defaultFsFilter = [](std::string_view name) { return endsWithAnyCaseless(name, ".gba", ".mb"); };
 constexpr BundledGameInfo gameInfo{"Motocross Challenge", Config::envIsLinux ? "MotocrossChallenge.7z" : "Motocross Challenge.7z"};

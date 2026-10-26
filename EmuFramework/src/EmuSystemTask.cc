@@ -428,9 +428,8 @@ bool EmuSystemTask::advanceFrames(FrameParams frameParams)
 		}
 	}
 	assume(frameInfo.advanced > 0);
-	// cap advanced frames if we're falling behind
-	if(frameInfo.duration > Milliseconds{70})
-		frameInfo.advanced = std::min(frameInfo.advanced, 4);
+	// cap advanced frames if we're falling behind (max 2 on single-core Cortex-A9 to prevent UI/input thread starvation)
+	frameInfo.advanced = std::min(frameInfo.advanced, 2);
 	EmuVideo *videoPtr = savedAdvancedFrames ? nullptr : &app.video;
 	bool shouldWait{};
 	if(videoPtr)

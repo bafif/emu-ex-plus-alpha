@@ -35,7 +35,7 @@ extern void CPUSoftwareInterrupt(ARM7TDMI &cpu, int comment);
 #define memoryWaitSeq32 cpu.memoryWaitSeq32
 
 // Waitstates when accessing data
-inline int dataTicksAccess16(ARM7TDMI &cpu, uint32_t address) // DATA 8/16bits NON SEQ
+static __attribute__((noinline)) int dataTicksAccess16(ARM7TDMI &cpu, uint32_t address) // DATA 8/16bits NON SEQ
 {
   int addr = (address >> 24) & 15;
   int value = memoryWait[addr];
@@ -53,7 +53,7 @@ inline int dataTicksAccess16(ARM7TDMI &cpu, uint32_t address) // DATA 8/16bits N
   return value;
 }
 
-inline int dataTicksAccess32(ARM7TDMI &cpu, uint32_t address) // DATA 32bits NON SEQ
+static __attribute__((noinline)) int dataTicksAccess32(ARM7TDMI &cpu, uint32_t address) // DATA 32bits NON SEQ
 {
   int addr = (address >> 24) & 15;
   int value = memoryWait32[addr];
@@ -71,7 +71,7 @@ inline int dataTicksAccess32(ARM7TDMI &cpu, uint32_t address) // DATA 32bits NON
   return value;
 }
 
-inline int dataTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address)// DATA 8/16bits SEQ
+static __attribute__((noinline)) int dataTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address)// DATA 8/16bits SEQ
 {
   int addr = (address >> 24) & 15;
   int value = memoryWaitSeq[addr];
@@ -89,7 +89,7 @@ inline int dataTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address)// DATA 8/16bits
   return value;
 }
 
-inline int dataTicksAccessSeq32(ARM7TDMI &cpu, uint32_t address)// DATA 32bits SEQ
+static __attribute__((noinline)) int dataTicksAccessSeq32(ARM7TDMI &cpu, uint32_t address)// DATA 32bits SEQ
 {
   int addr = (address >> 24) & 15;
   int value =  memoryWaitSeq32[addr];
@@ -108,7 +108,7 @@ inline int dataTicksAccessSeq32(ARM7TDMI &cpu, uint32_t address)// DATA 32bits S
 }
 
 // Waitstates when executing opcode
-inline int codeTicksAccess16(ARM7TDMI &cpu, uint32_t address) // THUMB NON SEQ
+static __attribute__((noinline)) int codeTicksAccess16(ARM7TDMI &cpu, uint32_t address) // THUMB NON SEQ
 {
   int addr = (address >> 24) & 15;
 
@@ -130,7 +130,7 @@ inline int codeTicksAccess16(ARM7TDMI &cpu, uint32_t address) // THUMB NON SEQ
   }
 }
 
-inline int codeTicksAccess32(ARM7TDMI &cpu, uint32_t address) // ARM NON SEQ
+static __attribute__((noinline)) int codeTicksAccess32(ARM7TDMI &cpu, uint32_t address) // ARM NON SEQ
 {
   int addr = (address >> 24) & 15;
 
@@ -152,7 +152,7 @@ inline int codeTicksAccess32(ARM7TDMI &cpu, uint32_t address) // ARM NON SEQ
   }
 }
 
-inline int codeTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address) // THUMB SEQ
+static __attribute__((noinline)) int codeTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address) // THUMB SEQ
 {
   int addr = (address >> 24) & 15;
 
@@ -171,7 +171,7 @@ inline int codeTicksAccessSeq16(ARM7TDMI &cpu, uint32_t address) // THUMB SEQ
   }
 }
 
-inline int codeTicksAccessSeq32(ARM7TDMI &cpu, uint32_t address) // ARM SEQ
+static __attribute__((noinline)) int codeTicksAccessSeq32(ARM7TDMI &cpu, uint32_t address) // ARM SEQ
 {
   int addr = (address >> 24) & 15;
 
