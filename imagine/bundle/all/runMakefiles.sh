@@ -11,7 +11,7 @@ runMakefiles ()
 		oldDir=`pwd`
 		cd `dirname $makefile`
 		echo "Running makefile: $makefile"
-		make -j -f `basename $makefile` $makeParams
+		make -j4 -f `basename $makefile` $makeParams
 		if [ $? != 0 ]
 		then
 			exit 1

@@ -319,7 +319,7 @@ $(android_armv7CMakeCache) : CMakeLists.txt
 .PHONY: android-armv7
 android-armv7 : $(android_armv7CMakeCache)
 	@echo "Building ARMv7 Shared Object"
-	$(PRINT_CMD)cmake --build build/android-armv7 --config=$(CONFIG) $(VERBOSE_ARG)
+	$(PRINT_CMD)cmake --build build/android-armv7 --config=$(CONFIG) -j4 $(VERBOSE_ARG)
 
 .PHONY: android-armv7-clean
 android-armv7-clean :

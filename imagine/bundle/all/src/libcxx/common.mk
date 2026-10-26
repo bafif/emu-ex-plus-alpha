@@ -69,7 +69,7 @@ $(outputLibcxxabiFile) : $(CXXABI_OBJ)
 
 $(outputLibFile) : $(makeFile)
 	@echo "Building libc++..."
-	$(MAKE) -C $(<D)
+	$(MAKE) -j4 -C $(<D)
 
 $(makeFile) : $(libcxxSrcDir)/CMakeLists.txt
 	@echo "Configuring libc++..."
