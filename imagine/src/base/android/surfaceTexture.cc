@@ -19,7 +19,7 @@ module;
 #include <imagine/util/utility.hh>
 #include <imagine/util/jni.hh>
 
-module imagine.internal.android:surface;
+export module imagine.internal.android:surface;
 
 namespace IG
 {

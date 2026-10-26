@@ -6,7 +6,10 @@
 			"hidden": true,
 			"generator": "Ninja Multi-Config",
 			"binaryDir": "${sourceDir}/build/${presetName}",
-			"cacheVariables": { "CMAKE_DEFAULT_BUILD_TYPE": "Release" },
+			"cacheVariables": {
+				"CMAKE_DEFAULT_BUILD_TYPE": "Release",
+				"CMAKE_EXPERIMENTAL_CXX_IMPORT_STD": "f35a9ac6-8463-4d38-8eec-5d6008153e7d"
+			},
 			"warnings": { "dev": false }
 		},
 		{
