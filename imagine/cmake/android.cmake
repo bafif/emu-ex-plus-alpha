@@ -66,7 +66,7 @@ string(APPEND CFLAGS_COMMON " -DANDROID")
 if(NOT android_implicitSysroot)
 	string(APPEND CFLAGS_COMMON " --sysroot=${ANDROID_CLANG_SYSROOT_PATH}")
 endif()
-string(APPEND LDFLAGS " -Wl,-z,noexecstack,-z,relro,-z,now,--warn-shared-textrel,--fatal-warnings \
+string(APPEND LDFLAGS " -fuse-ld=lld -Wl,-z,noexecstack,-z,relro,-z,now,--warn-shared-textrel,--fatal-warnings \
 -Wl,-O3,--gc-sections,--icf=all,--as-needed,--lto-whole-program-visibility,--exclude-libs=ALL")
 
 include("${CMAKE_CURRENT_LIST_DIR}/clang.cmake")

@@ -8,7 +8,7 @@ set(CTARGET arm-linux-androideabi)
 # Must declare min API 21 to compile with NDK r26+ headers
 set(ANDROID_CTARGET armv7-none-linux-androideabi21)
 set(ANDROID_NDK_SDK 9)
-set(CFLAGS_CODEGEN "-march=armv7-a -mthumb -mtune=generic")
+set(CFLAGS_CODEGEN "-march=armv7-a -mthumb -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp")
 set(LDFLAGS "-Wl,--fix-cortex-a8")
 set(LIBCXX_SUPPORT_LIBS "-landroid_support")
 set(CMAKE_ASM_FLAGS_INIT "-Wa,--noexecstack,-EL -march=armv7-a")

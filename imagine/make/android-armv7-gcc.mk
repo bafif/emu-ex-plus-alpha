@@ -9,7 +9,7 @@ android_ndkArch := arm
 # Must declare min API 21 to compile with NDK r26+ headers
 clangTarget := armv7-none-linux-androideabi21
 CFLAGS_CODEGEN += -fPIC
-armv7CPUFlags ?= -march=armv7-a -mtune=generic
+armv7CPUFlags ?= -march=armv7-a -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 android_cpuFlags ?= $(armv7CPUFlags)
 android_armv7State ?= -mthumb
 android_armState := $(android_armv7State)
