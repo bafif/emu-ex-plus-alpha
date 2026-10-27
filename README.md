@@ -33,8 +33,8 @@ Este repositorio **no incluye ni distribuye ROMs**. Usá sólo copias de juegos 
 
 | App | Estado en el GT-S5301L |
 |---|---|
-| GBC.emu | Instalada y probada: corre fluida y responden todos los botones táctiles. |
-| GBA.emu | Instalada con los ajustes de rendimiento de abajo. Todavía no hay mediciones de FPS antes/después publicadas. |
+| GBC.emu | Probada en el equipo: corre fluida y responden todos los botones táctiles. |
+| GBA.emu | Probada en el equipo con los ajustes de rendimiento de abajo: funciona bien. |
 
 Auditoría de los `libmain.so` generados (con [`pocket-plus/check-symbols.fish`](pocket-plus/check-symbols.fish)):
 
@@ -42,6 +42,15 @@ Auditoría de los `libmain.so` generados (con [`pocket-plus/check-symbols.fish`]
   `libc.so`, `libm.so`, `libEGL.so` y `libGLESv2.so` extraídos del propio teléfono.
 - 0 instrucciones `udiv`/`sdiv`.
 - APK firmados con *APK Signature Scheme v1* (JAR signing), además de v2.
+
+---
+
+## Descargar
+
+Los APK listos para instalar están en [Releases](https://github.com/bafif/emu-ex-plus-alpha/releases)
+(sólo armeabi-v7a, Android 2.3+ y probados en el GT-S5301L). Cómo instalarlos: ver
+[Instalar en el Pocket Plus](#instalar-en-el-pocket-plus). Si preferís compilarlos vos, seguí
+[Compilar](#compilar).
 
 ---
 
@@ -265,11 +274,12 @@ encuentra `udiv`/`sdiv`, el APK va a crashear en el teléfono.
    ```
    Si figura `offline` o no aparece (típico con la batería al 100 %):
    `adb kill-server && adb start-server`.
-3. Instalá:
+3. Instalá el APK (el de [Releases](https://github.com/bafif/emu-ex-plus-alpha/releases) o el que compilaste):
    ```sh
-   adb install -r GBA.emu/build/android/build/outputs/apk/release/GbaEmu-release.apk
-   adb install -r GBC.emu/build/android/build/outputs/apk/release/GbcEmu-release.apk
+   adb install -r GbaEmu-9-1.5.85-cortex-a9.apk     # o build/android/build/outputs/apk/release/GbaEmu-release.apk
+   adb install -r GbcEmu-9-1.5.85-cortex-a9.apk
    ```
+   También podés copiar el APK a la SD y abrirlo desde un explorador de archivos en el teléfono.
    Si da `INSTALL_PARSE_FAILED_NO_CERTIFICATES`, al APK le falta la firma v1
    ([diagnóstico 2](#2-android-40-sólo-acepta-firma-v1)). Si da `INSTALL_FAILED_UPDATE_INCOMPATIBLE`
    o `ALREADY_EXISTS`, desinstalá antes la versión oficial.
