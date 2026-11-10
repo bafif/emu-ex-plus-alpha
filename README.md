@@ -1,5 +1,7 @@
 # EX Emulators — build para Samsung Galaxy Pocket Plus (GT-S5301L)
 
+*Español · [English](README.en.md)*
+
 Fork de [EX Emulators (emu-ex-plus-alpha)](https://github.com/Rakashazi/emu-ex-plus-alpha) de
 **Robert Broglia** con los ajustes necesarios para compilar **GBA.emu** y **GBC.emu** con un
 toolchain actual (Clang 23 / C++26 / CMake 4.4) y hacerlos correr fluidos en un
